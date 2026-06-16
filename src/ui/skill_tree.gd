@@ -2,10 +2,15 @@
 extends Control
 class_name SkillTree
 
-@onready var balance_label: Label = $MarginContainer/VBoxContainer/Header/BalanceLabel
-@onready var close_button: Button = $MarginContainer/VBoxContainer/CloseButton
+@onready var balance_label: Label = $MarginContainer/VBoxContainer/Header/RightContainer/BalanceLabel
+@onready var close_button: Button = $MarginContainer/VBoxContainer/Header/RightContainer/CloseButton
 @onready var grid_container: Control = $MarginContainer/VBoxContainer/ScrollContainer/GridContainer
 @onready var scroll_container: ScrollContainer = $MarginContainer/VBoxContainer/ScrollContainer
+@onready var options_button: Button = $MarginContainer/VBoxContainer/Header/RightContainer/OptionsButton
+@onready var options_panel: VBoxContainer = $MarginContainer/VBoxContainer/OptionsPanel
+@onready var volume_slider: HSlider = $MarginContainer/VBoxContainer/OptionsPanel/VolumeSlider
+@onready var fullscreen_checkbox: CheckBox = $MarginContainer/VBoxContainer/OptionsPanel/FullscreenCheckbox
+@onready var back_button: Button = $MarginContainer/VBoxContainer/OptionsPanel/BackButton
 
 @onready var tooltip_popup: Control = $TooltipPopup
 @onready var tooltip_title: Label = $TooltipPopup/Margin/VBox/TooltipTitle
@@ -34,6 +39,13 @@ func _ready() -> void:
 	# Close button
 	close_button.pressed.connect(_on_close_pressed)
 	
+	# Connect options actions
+	options_button.pressed.connect(_on_options_pressed)
+	back_button.pressed.connect(_on_options_back_pressed)
+	volume_slider.value_changed.connect(_on_volume_changed)
+	fullscreen_checkbox.toggled.connect(_on_fullscreen_toggled)
+	_update_options_ui_states()
+	
 	# Connect to grid container draw for rendering connection lines
 	grid_container.draw.connect(_on_grid_container_draw)
 	
@@ -49,6 +61,15 @@ func _on_state_changed(state: int) -> void:
 	var game_mgr = get_node("/root/GameManager")
 	if state == game_mgr.GameState.UPGRADE_SCREEN:
 		visible = true
+		if options_panel:
+			options_panel.visible = false
+		if scroll_container:
+			scroll_container.visible = true
+		if options_button:
+			options_button.disabled = false
+		if close_button:
+			close_button.disabled = false
+		_update_options_ui_states()
 		_initialize_connection_progress()
 		_update_balance()
 		_populate_slots()
@@ -166,6 +187,12 @@ func _on_grid_container_draw() -> void:
 		var parent_id = slot.upgrade_data.upgrade_id
 		var parent_center = slot.position + slot.size / 2.0
 		
+		var closest_child_id = _get_closest_child_id(slot, slot_map)
+		var closest_center = Vector2.ZERO
+		if closest_child_id != "" and slot_map.has(closest_child_id):
+			var closest_slot = slot_map[closest_child_id]
+			closest_center = closest_slot.position + closest_slot.size / 2.0
+			
 		for child_id in slot.upgrade_data.unlocks:
 			if slot_map.has(child_id):
 				var key = parent_id + "->" + child_id
@@ -179,17 +206,45 @@ func _on_grid_container_draw() -> void:
 				var child_slot = slot_map[child_id]
 				var child_center = child_slot.position + child_slot.size / 2.0
 				
+				var line_start = parent_center
+				if child_id != closest_child_id and closest_center != Vector2.ZERO:
+					line_start = closest_center
+					
 				# Interpolate line endpoint for filling effect
-				var line_end = parent_center.lerp(child_center, progress)
+				var line_end = line_start.lerp(child_center, progress)
 				
 				# White line connecting the upgrade to the upgrades it unlocks
 				var line_color = Color(1.0, 1.0, 1.0, 0.9)
 				var line_width = 3.5
 				
 				# Draw black outline/shadow first for high contrast contrast
-				grid_container.draw_line(parent_center, line_end, Color(0.0, 0.0, 0.0, 0.8), line_width + 2.0, true)
+				grid_container.draw_line(line_start, line_end, Color(0.0, 0.0, 0.0, 0.8), line_width + 2.0, true)
 				# Draw foreground colored line
-				grid_container.draw_line(parent_center, line_end, line_color, line_width, true)
+				grid_container.draw_line(line_start, line_end, line_color, line_width, true)
+
+func _get_closest_child_id(parent_slot: UpgradeSlotUI, slot_map: Dictionary) -> String:
+	var closest_child_id = ""
+	var min_dist = INF
+	var parent_center = parent_slot.position + parent_slot.size / 2.0
+	
+	for child_id in parent_slot.upgrade_data.unlocks:
+		if slot_map.has(child_id):
+			var child_slot = slot_map[child_id]
+			var child_center = child_slot.position + child_slot.size / 2.0
+			var dist = parent_center.distance_to(child_center)
+			if dist < min_dist:
+				min_dist = dist
+				closest_child_id = child_id
+	return closest_child_id
+
+func _add_active_animation(anim: Dictionary) -> void:
+	var exists = false
+	for a in active_line_animations:
+		if a.key == anim.key:
+			exists = true
+			break
+	if not exists:
+		active_line_animations.append(anim)
 
 func _initialize_connection_progress() -> void:
 	connection_progress.clear()
@@ -225,30 +280,26 @@ func _start_line_animation_from(parent_id: String) -> void:
 		return
 		
 	var parent_slot = slot_map[parent_id]
-	for child_id in parent_slot.upgrade_data.unlocks:
-		if slot_map.has(child_id):
-			var key = parent_id + "->" + child_id
-			connection_progress[key] = 0.0
-			
-			var child_lvl = upgrade_mgr.get_upgrade_level(child_id)
-			var trigger_next = child_lvl > 0
-			
-			var anim = {
-				"parent_id": parent_id,
-				"child_id": child_id,
-				"key": key,
-				"progress": 0.0,
-				"duration": 0.4,
-				"trigger_next_on_finish": trigger_next
-			}
-			# Avoid duplicating animations for the same key
-			var exists = false
-			for a in active_line_animations:
-				if a.key == key:
-					exists = true
-					break
-			if not exists:
-				active_line_animations.append(anim)
+	var closest_child_id = _get_closest_child_id(parent_slot, slot_map)
+	
+	if closest_child_id != "":
+		# Start closest child animation first
+		var key = parent_id + "->" + closest_child_id
+		connection_progress[key] = 0.0
+		
+		var child_lvl = upgrade_mgr.get_upgrade_level(closest_child_id)
+		var trigger_next = child_lvl > 0
+		
+		var anim = {
+			"parent_id": parent_id,
+			"child_id": closest_child_id,
+			"key": key,
+			"progress": 0.0,
+			"duration": 0.4,
+			"trigger_next_on_finish": trigger_next,
+			"is_closest": true
+		}
+		_add_active_animation(anim)
 
 func _process(delta: float) -> void:
 	if not visible:
@@ -283,6 +334,37 @@ func _on_line_animation_finished(anim: Dictionary) -> void:
 	if child_slot:
 		child_slot.play_bounce_animation()
 		
+	# If this was the closest child animation, trigger remaining child animations
+	if anim.get("is_closest", false):
+		var parent_id = anim.parent_id
+		var slot_map = {}
+		for slot in slots:
+			if slot.upgrade_data:
+				slot_map[slot.upgrade_data.upgrade_id] = slot
+				
+		if slot_map.has(parent_id):
+			var parent_slot = slot_map[parent_id]
+			var upgrade_mgr = get_node("/root/UpgradeManager")
+			
+			for child_id in parent_slot.upgrade_data.unlocks:
+				if child_id != anim.child_id and slot_map.has(child_id):
+					var key = parent_id + "->" + child_id
+					connection_progress[key] = 0.0
+					
+					var child_lvl = upgrade_mgr.get_upgrade_level(child_id)
+					var trigger_next = child_lvl > 0
+					
+					var child_anim = {
+						"parent_id": parent_id,
+						"child_id": child_id,
+						"key": key,
+						"progress": 0.0,
+						"duration": 0.4,
+						"trigger_next_on_finish": trigger_next,
+						"is_closest": false
+					}
+					_add_active_animation(child_anim)
+					
 	# If trigger_next is true, start next connection in chain
 	if anim.trigger_next_on_finish:
 		_start_line_animation_from(anim.child_id)
@@ -320,10 +402,20 @@ func _on_grid_container_gui_input(event: InputEvent) -> void:
 
 func _update_canvas_size() -> void:
 	var slots = _find_slots_recursive(grid_container)
-	var max_x = 1920.0 # default min fallback
-	var max_y = 1080.0
+	if slots.is_empty():
+		grid_container.custom_minimum_size = Vector2(1920.0, 1080.0)
+		return
+		
+	var min_x = INF
+	var min_y = INF
+	var max_x = -INF
+	var max_y = -INF
 	
 	for slot in slots:
+		if slot.position.x < min_x:
+			min_x = slot.position.x
+		if slot.position.y < min_y:
+			min_y = slot.position.y
 		var slot_end_x = slot.position.x + slot.size.x
 		var slot_end_y = slot.position.y + slot.size.y
 		if slot_end_x > max_x:
@@ -331,6 +423,58 @@ func _update_canvas_size() -> void:
 		if slot_end_y > max_y:
 			max_y = slot_end_y
 			
-	# Add padding margin so items don't sit right at the edge
+	# Shift slots so the leftmost and topmost slots sit exactly at the padding margin (200px)
+	var target_min_x = 200.0
+	var target_min_y = 200.0
+	var shift_x = target_min_x - min_x
+	var shift_y = target_min_y - min_y
+	
+	for slot in slots:
+		slot.position.x += shift_x
+		slot.position.y += shift_y
+		
+	# Recalculate max coordinates after shift
+	var new_max_x = max_x + shift_x
+	var new_max_y = max_y + shift_y
+	
+	# Add padding margin so items don't sit right at the right/bottom edge
 	var padding = 200.0
-	grid_container.custom_minimum_size = Vector2(max_x + padding, max_y + padding)
+	grid_container.custom_minimum_size = Vector2(new_max_x + padding, new_max_y + padding)
+
+func _on_options_pressed() -> void:
+	scroll_container.visible = false
+	options_panel.visible = true
+	options_button.disabled = true
+	close_button.disabled = true
+	_update_options_ui_states()
+
+func _on_options_back_pressed() -> void:
+	scroll_container.visible = true
+	options_panel.visible = false
+	options_button.disabled = false
+	close_button.disabled = false
+
+func _on_volume_changed(val: float) -> void:
+	var master_bus_idx = AudioServer.get_bus_index("Master")
+	if master_bus_idx != -1:
+		if val <= 0.0001:
+			AudioServer.set_bus_volume_db(master_bus_idx, -80.0)
+		else:
+			AudioServer.set_bus_volume_db(master_bus_idx, linear_to_db(val))
+	get_node("/root/GameManager").save_game()
+
+func _on_fullscreen_toggled(is_fullscreen: bool) -> void:
+	if is_fullscreen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	get_node("/root/GameManager").save_game()
+
+func _update_options_ui_states() -> void:
+	var master_bus_idx = AudioServer.get_bus_index("Master")
+	if master_bus_idx != -1:
+		var current_vol_db = AudioServer.get_bus_volume_db(master_bus_idx)
+		volume_slider.value = db_to_linear(current_vol_db)
+		
+	var current_mode = DisplayServer.window_get_mode()
+	fullscreen_checkbox.button_pressed = (current_mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN or current_mode == DisplayServer.WINDOW_MODE_FULLSCREEN)

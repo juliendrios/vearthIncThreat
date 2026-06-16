@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_kq7xb")
-upgrade_id = "GarbageQuality"
+upgrade_id = "DA_GarbageQualityT_0"
 upgrade_name = "Garbage Quality"
 description = "20% chance space garbage spawns as High Quality (2x HP, 2x value, +50% size)."
 icon = ExtResource("1_uu53v")

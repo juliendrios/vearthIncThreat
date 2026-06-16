@@ -105,3 +105,14 @@ func _physics_process(_delta: float) -> void:
 		visual_3d.global_position = Vector3(global_position.x, 0.0, global_position.y)
 		# Sync rotation (2D rotation around Z maps to 3D rotation around Y)
 		visual_3d.global_rotation.y = -global_rotation
+
+func stop_movement() -> void:
+	velocity = Vector2.ZERO
+	if "current_move_speed" in self:
+		self.set("current_move_speed", 0.0)
+	if "base_speed" in self:
+		self.set("base_speed", 0.0)
+	if "fly_in_speed" in self:
+		self.set("fly_in_speed", 0.0)
+	if "orbit_speed" in self:
+		self.set("orbit_speed", 0.0)

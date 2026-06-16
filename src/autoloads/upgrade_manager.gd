@@ -28,11 +28,16 @@ func load_all_upgrades() -> void:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if not dir.current_is_dir() and file_name.ends_with(".tres"):
-				var upgrade = load("res://src/resources/upgrades/" + file_name) as UpgradeData
-				if upgrade:
-					upgrades_list.append(upgrade)
-					upgrades_by_id[upgrade.upgrade_id] = upgrade
+			if not dir.current_is_dir():
+				var actual_file = file_name
+				if file_name.ends_with(".remap"):
+					actual_file = file_name.trim_suffix(".remap")
+				
+				if actual_file.ends_with(".tres") or actual_file.ends_with(".res"):
+					var upgrade = load("res://src/resources/upgrades/" + actual_file) as UpgradeData
+					if upgrade:
+						upgrades_list.append(upgrade)
+						upgrades_by_id[upgrade.upgrade_id] = upgrade
 			file_name = dir.get_next()
 		dir.list_dir_end()
 	

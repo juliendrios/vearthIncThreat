@@ -19,6 +19,14 @@ func _ready() -> void:
 	pause_panel.visible = true
 	options_panel.visible = false
 	
+	# Create Upgrade Button programmatically
+	var upgrade_btn = Button.new()
+	upgrade_btn.text = "UPGRADES"
+	upgrade_btn.custom_minimum_size = Vector2(0, 40)
+	pause_panel.add_child(upgrade_btn)
+	pause_panel.move_child(upgrade_btn, options_button.get_index())
+	upgrade_btn.pressed.connect(_open_upgrades)
+	
 	# Connect buttons
 	resume_button.pressed.connect(_resume_game)
 	options_button.pressed.connect(_show_options)
@@ -37,6 +45,12 @@ func _ready() -> void:
 		
 	var current_mode = DisplayServer.window_get_mode()
 	fullscreen_checkbox.button_pressed = (current_mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN or current_mode == DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+func _open_upgrades() -> void:
+	visible = false
+	get_tree().paused = false
+	var game_mgr = get_node("/root/GameManager")
+	game_mgr.change_state(game_mgr.GameState.UPGRADE_SCREEN)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE and not event.echo:

@@ -6,7 +6,7 @@ signal credits_changed(run_credits: float, lifetime_credits: float)
 signal timer_updated(time_left: float)
 signal trigger_camera_animation()
 
-enum GameState { PLAYING, PAUSED, UPGRADE_SCREEN, DEFEAT, VICTORY, TRANSITION }
+enum GameState { PLAYING, PAUSED, UPGRADE_SCREEN, END_SESSION, VICTORY, TRANSITION }
 
 var current_state: GameState = GameState.PLAYING
 
@@ -22,7 +22,7 @@ var decay_timer: float = 60.0
 var current_zone: int = 1
 
 var eliminated_threats: int = 0
-var debris_chance: float = 0.20
+var debris_chance: float = 0.0
 
 # Camera transition trigger from purchases
 var b_can_animate_camera: bool = false
@@ -59,7 +59,7 @@ func change_state(new_state: GameState, should_emit: bool = true) -> void:
 	if should_emit:
 		state_changed.emit(new_state)
 	
-	if new_state == GameState.PAUSED or new_state == GameState.DEFEAT:
+	if new_state == GameState.PAUSED or new_state == GameState.END_SESSION:
 		if object_pooler and object_pooler.has_method("return_all_active_to_pool"):
 			object_pooler.return_all_active_to_pool()
 
@@ -95,8 +95,20 @@ func start_next_round() -> void:
 	get_tree().reload_current_scene()
 
 func planet_destroyed() -> void:
+	# Change state to TRANSITION to stop spawning and cursor sweep immediately
+	change_state(GameState.TRANSITION, false)
+	
+	# Stop all active actors
+	var actors = get_active_actors()
+	for actor in actors:
+		if actor.has_method("stop_movement"):
+			actor.stop_movement()
+			
+	# Wait 0.5 seconds
+	await get_tree().create_timer(0.5).timeout
+	
 	lifetime_credits += run_credits
-	change_state(GameState.DEFEAT)
+	change_state(GameState.END_SESSION)
 	credits_changed.emit(run_credits, lifetime_credits)
 	save_game()
 
@@ -104,86 +116,15 @@ func _on_upgrade_purchased(upgrade_id: String, _new_level: int) -> void:
 	var upgrade = UpgradeManager.upgrades_by_id.get(upgrade_id)
 	if upgrade and upgrade.category in CAMERA_ANIM_TRIGGER_CATEGORIES:
 		b_can_animate_camera = true
-	if upgrade_id == "UnlockDebrie":
+	if upgrade_id == "DA_UnlockDebrie_T0":
 		debris_chance = 0.80
 	save_game()
 
 func save_game() -> void:
-	if not is_fully_loaded or OS.is_debug_build():
-		return
-		
-	var master_vol = 0.8
-	var master_bus_idx = AudioServer.get_bus_index("Master")
-	if master_bus_idx != -1:
-		master_vol = db_to_linear(AudioServer.get_bus_volume_db(master_bus_idx))
-		
-	var is_fullscreen = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN or DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
-	
-	var save_data = {
-		"lifetime_credits": lifetime_credits,
-		"current_zone": current_zone,
-		"purchased_levels": UpgradeManager.purchased_levels,
-		"master_volume": master_vol,
-		"fullscreen": is_fullscreen
-	}
-	
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file:
-		var json_string = JSON.stringify(save_data)
-		file.store_string(json_string)
-		file.close()
-		print("[GameManager] Game auto-saved successfully.")
-	else:
-		print("[GameManager] Failed to write save file.")
+	return
 
 func load_game() -> void:
-	if not FileAccess.file_exists(SAVE_PATH):
-		print("[GameManager] No save game found.")
-		return
-		
-	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-	if file:
-		var json_string = file.get_as_text()
-		file.close()
-		
-		var json = JSON.new()
-		var parse_err = json.parse(json_string)
-		if parse_err == OK:
-			var save_data = json.get_data()
-			if save_data is Dictionary:
-				lifetime_credits = save_data.get("lifetime_credits", 0.0)
-				current_zone = save_data.get("current_zone", 1)
-				
-				var saved_levels = save_data.get("purchased_levels", {})
-				if saved_levels is Dictionary:
-					for upgrade_id in saved_levels.keys():
-						UpgradeManager.purchased_levels[upgrade_id] = int(saved_levels[upgrade_id])
-						
-				# Update specific upgrade side-effects in GameManager
-				if UpgradeManager.get_upgrade_level("UnlockDebrie") > 0:
-					debris_chance = 0.80
-					
-				# Apply options settings
-				var master_vol = save_data.get("master_volume", 0.8)
-				var master_bus_idx = AudioServer.get_bus_index("Master")
-				if master_bus_idx != -1:
-					if master_vol <= 0.0001:
-						AudioServer.set_bus_volume_db(master_bus_idx, -80.0)
-					else:
-						AudioServer.set_bus_volume_db(master_bus_idx, linear_to_db(master_vol))
-				
-				var is_fullscreen = save_data.get("fullscreen", false)
-				if is_fullscreen:
-					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-				else:
-					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-					
-				credits_changed.emit(run_credits, lifetime_credits)
-				print("[GameManager] Game loaded successfully.")
-			else:
-				print("[GameManager] Save data format invalid.")
-		else:
-			print("[GameManager] Parse error loading save game: ", parse_err)
+	return
 
 func register_eliminated_threat() -> void:
 	eliminated_threats += 1

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://clickdamage1"]
 
-[ext_resource type="Texture2D" uid="uid://dkj7ha3tpah6g" path="res://src/assets/UI/UpgradeIcons/Damage.png" id="1_t4hik"]
+[ext_resource type="Texture2D" uid="uid://df7wgv6p2s35t" path="res://src/assets/UI/UpgradeIcons/T_Damage.png" id="1_t4hik"]
 [ext_resource type="Script" uid="uid://bqxo10t8muw4q" path="res://src/resources/upgrade_data.gd" id="2_jeq0o"]
 
 [resource]
@@ -12,4 +12,4 @@ icon = ExtResource("1_t4hik")
 category = "ClickDamage"
 base_cost = 5.0
 value_increment = 1.0
-unlocks = Array[String](["DA_ClickDamage_T1"])
+unlocks = Array[String]([])

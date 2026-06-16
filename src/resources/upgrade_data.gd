@@ -59,21 +59,16 @@ func _get_upgrade_ids() -> Array[String]:
 			dir.list_dir_begin()
 			var file_name = dir.get_next()
 			while file_name != "":
-				if not dir.current_is_dir() and file_name.ends_with(".tres"):
-					var file = FileAccess.open(path + file_name, FileAccess.READ)
-					if file:
-						var content = file.get_as_text()
-						file.close()
-						
-						# Parse upgrade_id = "value"
-						var idx = content.find("upgrade_id = \"")
-						if idx != -1:
-							var start = idx + 14
-							var end = content.find("\"", start)
-							if end != -1:
-								var val = content.substr(start, end - start)
-								if val != "" and not val in ids:
-									ids.append(val)
+				if not dir.current_is_dir():
+					var actual_file = file_name
+					if file_name.ends_with(".remap"):
+						actual_file = file_name.trim_suffix(".remap")
+					
+					if actual_file.ends_with(".tres") or actual_file.ends_with(".res"):
+						var upgrade = load(path + actual_file) as UpgradeData
+						if upgrade and upgrade.upgrade_id != "":
+							if not upgrade.upgrade_id in ids:
+								ids.append(upgrade.upgrade_id)
 				file_name = dir.get_next()
 			dir.list_dir_end()
 	ids.sort()

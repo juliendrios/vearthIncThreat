@@ -94,7 +94,7 @@ script = ExtResource("5_planet")
 visual_3d_scene = ExtResource("14_planet_3d")
 satellite_scene = ExtResource("19_satellite")
 base_hp = 10.0
-decay_rate = 0.2
+decay_rate = 0.4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPlanet" unique_id=93581585]
 shape = SubResource("CircleShape2D_planet")
@@ -106,354 +106,354 @@ curve = SubResource("Curve2D_hmxxs")
 script = ExtResource("18_spawn_path")
 spawner_count = 50
 
-[node name="@PathFollow2D@18573" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=660016709]
+[node name="@PathFollow2D@222550" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=2039670830]
 position = Vector2(650, 0)
 rotates = false
 
-[node name="SpawnerPoint_0" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18573" unique_id=1690755003]
+[node name="SpawnerPoint_0" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222550" unique_id=907386881]
 
-[node name="@PathFollow2D@18575" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=527758534]
+[node name="@PathFollow2D@222552" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=52509538]
 position = Vector2(624.1286, 69.10365)
 progress = 95.98202
 rotates = false
 
-[node name="SpawnerPoint_1" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18575" unique_id=1334214384]
+[node name="SpawnerPoint_1" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222552" unique_id=1218327087]
 
-[node name="@PathFollow2D@18577" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=303492094]
+[node name="@PathFollow2D@222554" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=615604713]
 position = Vector2(605.1661, 163.19052)
 progress = 191.96404
 rotates = false
 
-[node name="SpawnerPoint_2" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18577" unique_id=133180498]
+[node name="SpawnerPoint_2" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222554" unique_id=782857629]
 
-[node name="@PathFollow2D@18579" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=610569092]
+[node name="@PathFollow2D@222556" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=897348249]
 position = Vector2(594.11847, 257.93295)
 progress = 287.94604
 rotates = false
 
-[node name="SpawnerPoint_3" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18579" unique_id=255597528]
+[node name="SpawnerPoint_3" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222556" unique_id=741623617]
 
-[node name="@PathFollow2D@18581" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1331125628]
+[node name="@PathFollow2D@222558" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=87555726]
 position = Vector2(557.1057, 292.8874)
 progress = 383.92807
 rotates = false
 
-[node name="SpawnerPoint_4" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18581" unique_id=1157705920]
+[node name="SpawnerPoint_4" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222558" unique_id=888749344]
 
-[node name="@PathFollow2D@18583" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1598483202]
+[node name="@PathFollow2D@222560" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=2072104951]
 position = Vector2(503.16895, 372.2829)
 progress = 479.91013
 rotates = false
 
-[node name="SpawnerPoint_5" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18583" unique_id=1964383353]
+[node name="SpawnerPoint_5" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222560" unique_id=837026058]
 
-[node name="@PathFollow2D@18585" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=132890144]
+[node name="@PathFollow2D@222562" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=94971084]
 position = Vector2(453.6355, 454.50708)
 progress = 575.8921
 rotates = false
 
-[node name="SpawnerPoint_6" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18585" unique_id=245468308]
+[node name="SpawnerPoint_6" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222562" unique_id=1328675506]
 
-[node name="@PathFollow2D@18587" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=809524044]
+[node name="@PathFollow2D@222564" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1247441969]
 position = Vector2(412.81067, 477.46518)
 progress = 671.87415
 rotates = false
 
-[node name="SpawnerPoint_7" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18587" unique_id=851907512]
+[node name="SpawnerPoint_7" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222564" unique_id=151072217]
 
-[node name="@PathFollow2D@18589" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=2041585751]
+[node name="@PathFollow2D@222566" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1823519692]
 position = Vector2(332.31332, 529.7379)
 progress = 767.85614
 rotates = false
 
-[node name="SpawnerPoint_8" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18589" unique_id=1484236575]
+[node name="SpawnerPoint_8" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222566" unique_id=2141728955]
 
-[node name="@PathFollow2D@18591" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1271594742]
+[node name="@PathFollow2D@222568" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1580868773]
 position = Vector2(254.46155, 585.7469)
 progress = 863.83826
 rotates = false
 
-[node name="SpawnerPoint_9" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18591" unique_id=1879400577]
+[node name="SpawnerPoint_9" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222568" unique_id=586862674]
 
-[node name="@PathFollow2D@18593" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=57945078]
+[node name="@PathFollow2D@222570" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=146690035]
 position = Vector2(210.53043, 597.2642)
 progress = 959.82025
 rotates = false
 
-[node name="SpawnerPoint_10" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18593" unique_id=1969613485]
+[node name="SpawnerPoint_10" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222570" unique_id=1766136308]
 
-[node name="@PathFollow2D@18595" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1838747166]
+[node name="@PathFollow2D@222572" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=456683943]
 position = Vector2(116.05256, 614.18854)
 progress = 1055.8022
 rotates = false
 
-[node name="SpawnerPoint_11" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18595" unique_id=1948762840]
+[node name="SpawnerPoint_11" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222572" unique_id=204963999]
 
-[node name="@PathFollow2D@18597" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1348095480]
+[node name="@PathFollow2D@222574" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=834915620]
 position = Vector2(22.43781, 635.355)
 progress = 1151.7842
 rotates = false
 
-[node name="SpawnerPoint_12" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18597" unique_id=1180262460]
+[node name="SpawnerPoint_12" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222574" unique_id=1571895940]
 
-[node name="@PathFollow2D@18599" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=2121383676]
+[node name="@PathFollow2D@222576" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1734616475]
 position = Vector2(-22.4375, 635.35504)
 progress = 1247.7662
 rotates = false
 
-[node name="SpawnerPoint_13" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18599" unique_id=1923521501]
+[node name="SpawnerPoint_13" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222576" unique_id=143298802]
 
-[node name="@PathFollow2D@18601" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1131016266]
+[node name="@PathFollow2D@222578" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1054847379]
 position = Vector2(-116.05209, 614.18866)
 progress = 1343.7483
 rotates = false
 
-[node name="SpawnerPoint_14" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18601" unique_id=411593049]
+[node name="SpawnerPoint_14" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222578" unique_id=1428034167]
 
-[node name="@PathFollow2D@18603" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=836587249]
+[node name="@PathFollow2D@222580" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1843072591]
 position = Vector2(-210.53009, 597.26434)
 progress = 1439.7303
 rotates = false
 
-[node name="SpawnerPoint_15" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18603" unique_id=840880323]
+[node name="SpawnerPoint_15" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222580" unique_id=1811695556]
 
-[node name="@PathFollow2D@18605" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1763150474]
+[node name="@PathFollow2D@222582" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1607448343]
 position = Vector2(-254.46124, 585.74713)
 progress = 1535.7123
 rotates = false
 
-[node name="SpawnerPoint_16" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18605" unique_id=869814650]
+[node name="SpawnerPoint_16" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222582" unique_id=917354382]
 
-[node name="@PathFollow2D@18607" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1752614471]
+[node name="@PathFollow2D@222584" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1793936299]
 position = Vector2(-332.31314, 529.73804)
 progress = 1631.6943
 rotates = false
 
-[node name="SpawnerPoint_17" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18607" unique_id=1813646160]
+[node name="SpawnerPoint_17" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222584" unique_id=88510029]
 
-[node name="@PathFollow2D@18609" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=2029989586]
+[node name="@PathFollow2D@222586" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=988505910]
 position = Vector2(-412.81058, 477.46524)
 progress = 1727.6765
 rotates = false
 
-[node name="SpawnerPoint_18" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18609" unique_id=790298988]
+[node name="SpawnerPoint_18" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222586" unique_id=1141034680]
 
-[node name="@PathFollow2D@18611" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=727497959]
+[node name="@PathFollow2D@222588" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=863467668]
 position = Vector2(-453.63525, 454.50757)
 progress = 1823.6583
 rotates = false
 
-[node name="SpawnerPoint_19" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18611" unique_id=633628559]
+[node name="SpawnerPoint_19" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222588" unique_id=1058578270]
 
-[node name="@PathFollow2D@18613" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=351076550]
+[node name="@PathFollow2D@222590" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1265074133]
 position = Vector2(-503.16882, 372.28305)
 progress = 1919.6405
 rotates = false
 
-[node name="SpawnerPoint_20" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18613" unique_id=2058738651]
+[node name="SpawnerPoint_20" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222590" unique_id=779703583]
 
-[node name="@PathFollow2D@18615" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=621274790]
+[node name="@PathFollow2D@222592" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1918143509]
 position = Vector2(-557.10565, 292.88773)
 progress = 2015.6224
 rotates = false
 
-[node name="SpawnerPoint_21" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18615" unique_id=1214772473]
+[node name="SpawnerPoint_21" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222592" unique_id=1032833777]
 
-[node name="@PathFollow2D@18617" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=2054896871]
+[node name="@PathFollow2D@222594" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=40045821]
 position = Vector2(-594.11865, 257.9331)
 progress = 2111.6045
 rotates = false
 
-[node name="SpawnerPoint_22" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18617" unique_id=1096324999]
+[node name="SpawnerPoint_22" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222594" unique_id=913557727]
 
-[node name="@PathFollow2D@18619" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=330501412]
+[node name="@PathFollow2D@222596" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1678172150]
 position = Vector2(-605.166, 163.1906)
 progress = 2207.5864
 rotates = false
 
-[node name="SpawnerPoint_23" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18619" unique_id=1784493588]
+[node name="SpawnerPoint_23" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222596" unique_id=1728707091]
 
-[node name="@PathFollow2D@18621" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1437944702]
+[node name="@PathFollow2D@222598" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1638806082]
 position = Vector2(-624.1286, 69.10401)
 progress = 2303.5684
 rotates = false
 
-[node name="SpawnerPoint_24" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18621" unique_id=781898201]
+[node name="SpawnerPoint_24" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222598" unique_id=2129806246]
 
-[node name="@PathFollow2D@18623" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=685652893]
+[node name="@PathFollow2D@222600" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1663459480]
 position = Vector2(-650, -5.6266785e-05)
 progress = 2399.5505
 rotates = false
 
-[node name="SpawnerPoint_25" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18623" unique_id=988802731]
+[node name="SpawnerPoint_25" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222600" unique_id=1149166551]
 
-[node name="@PathFollow2D@18625" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=136298259]
+[node name="@PathFollow2D@222602" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=846249293]
 position = Vector2(-624.1286, -69.10384)
 progress = 2495.5325
 rotates = false
 
-[node name="SpawnerPoint_26" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18625" unique_id=1655949115]
+[node name="SpawnerPoint_26" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222602" unique_id=116147292]
 
-[node name="@PathFollow2D@18627" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=848490666]
+[node name="@PathFollow2D@222604" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=669999353]
 position = Vector2(-605.166, -163.19086)
 progress = 2591.5146
 rotates = false
 
-[node name="SpawnerPoint_27" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18627" unique_id=551449025]
+[node name="SpawnerPoint_27" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222604" unique_id=90120276]
 
-[node name="@PathFollow2D@18629" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=881956021]
+[node name="@PathFollow2D@222606" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1288962805]
 position = Vector2(-594.119, -257.93323)
 progress = 2687.4966
 rotates = false
 
-[node name="SpawnerPoint_28" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18629" unique_id=929274377]
+[node name="SpawnerPoint_28" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222606" unique_id=2074486971]
 
-[node name="@PathFollow2D@18631" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=588861678]
+[node name="@PathFollow2D@222608" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1381542109]
 position = Vector2(-557.1054, -292.88794)
 progress = 2783.4785
 rotates = false
 
-[node name="SpawnerPoint_29" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18631" unique_id=2122265648]
+[node name="SpawnerPoint_29" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222608" unique_id=1554898738]
 
-[node name="@PathFollow2D@18633" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=303279308]
+[node name="@PathFollow2D@222610" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=198982696]
 position = Vector2(-503.16858, -372.2834)
 progress = 2879.4607
 rotates = false
 
-[node name="SpawnerPoint_30" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18633" unique_id=1224432365]
+[node name="SpawnerPoint_30" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222610" unique_id=781694867]
 
-[node name="@PathFollow2D@18635" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1377333811]
+[node name="@PathFollow2D@222612" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1368678487]
 position = Vector2(-453.6352, -454.50787)
 progress = 2975.4426
 rotates = false
 
-[node name="SpawnerPoint_31" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18635" unique_id=258923248]
+[node name="SpawnerPoint_31" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222612" unique_id=1458261270]
 
-[node name="@PathFollow2D@18637" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1025100415]
+[node name="@PathFollow2D@222614" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=2001636852]
 position = Vector2(-412.81055, -477.46524)
 progress = 3071.4246
 rotates = false
 
-[node name="SpawnerPoint_32" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18637" unique_id=2127442340]
+[node name="SpawnerPoint_32" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222614" unique_id=364271091]
 
-[node name="@PathFollow2D@18639" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=900998342]
+[node name="@PathFollow2D@222616" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=179311330]
 position = Vector2(-332.31314, -529.7381)
 progress = 3167.4067
 rotates = false
 
-[node name="SpawnerPoint_33" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18639" unique_id=1351544073]
+[node name="SpawnerPoint_33" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222616" unique_id=1196240755]
 
-[node name="@PathFollow2D@18641" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=588807656]
+[node name="@PathFollow2D@222618" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=13264729]
 position = Vector2(-254.46109, -585.7474)
 progress = 3263.3887
 rotates = false
 
-[node name="SpawnerPoint_34" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18641" unique_id=2120329105]
+[node name="SpawnerPoint_34" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222618" unique_id=2048920162]
 
-[node name="@PathFollow2D@18643" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1057256117]
+[node name="@PathFollow2D@222620" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=108468771]
 position = Vector2(-210.5295, -597.2644)
 progress = 3359.3706
 rotates = false
 
-[node name="SpawnerPoint_35" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18643" unique_id=1982303091]
+[node name="SpawnerPoint_35" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222620" unique_id=669164255]
 
-[node name="@PathFollow2D@18645" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1430327413]
+[node name="@PathFollow2D@222622" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1530875063]
 position = Vector2(-116.051346, -614.1888)
 progress = 3455.353
 rotates = false
 
-[node name="SpawnerPoint_36" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18645" unique_id=1446795410]
+[node name="SpawnerPoint_36" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222622" unique_id=125916467]
 
-[node name="@PathFollow2D@18647" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=303791962]
+[node name="@PathFollow2D@222624" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1477868240]
 position = Vector2(-22.436794, -635.3553)
 progress = 3551.335
 rotates = false
 
-[node name="SpawnerPoint_37" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18647" unique_id=1970307040]
+[node name="SpawnerPoint_37" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222624" unique_id=171678762]
 
-[node name="@PathFollow2D@18649" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=232587763]
+[node name="@PathFollow2D@222626" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=729694862]
 position = Vector2(22.439384, -635.3545)
 progress = 3647.3167
 rotates = false
 
-[node name="SpawnerPoint_38" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18649" unique_id=1070106182]
+[node name="SpawnerPoint_38" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222626" unique_id=1987790105]
 
-[node name="@PathFollow2D@18651" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1193094255]
+[node name="@PathFollow2D@222628" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=963288259]
 position = Vector2(116.05389, -614.1883)
 progress = 3743.2986
 rotates = false
 
-[node name="SpawnerPoint_39" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18651" unique_id=824384882]
+[node name="SpawnerPoint_39" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222628" unique_id=608142955]
 
-[node name="@PathFollow2D@18653" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1646678883]
+[node name="@PathFollow2D@222630" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1498314186]
 position = Vector2(210.53217, -597.26404)
 progress = 3839.281
 rotates = false
 
-[node name="SpawnerPoint_40" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18653" unique_id=1078730885]
+[node name="SpawnerPoint_40" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222630" unique_id=1354568052]
 
-[node name="@PathFollow2D@18655" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=350114803]
+[node name="@PathFollow2D@222632" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=2056180779]
 position = Vector2(254.46335, -585.7455)
 progress = 3935.263
 rotates = false
 
-[node name="SpawnerPoint_41" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18655" unique_id=929753204]
+[node name="SpawnerPoint_41" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222632" unique_id=1234899720]
 
-[node name="@PathFollow2D@18657" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=373466648]
+[node name="@PathFollow2D@222634" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=962458251]
 position = Vector2(332.3151, -529.7368)
 progress = 4031.2449
 rotates = false
 
-[node name="SpawnerPoint_42" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18657" unique_id=922717074]
+[node name="SpawnerPoint_42" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222634" unique_id=1350802746]
 
-[node name="@PathFollow2D@18659" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=611042185]
+[node name="@PathFollow2D@222636" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1656843009]
 position = Vector2(412.81287, -477.4639)
 progress = 4127.227
 rotates = false
 
-[node name="SpawnerPoint_43" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18659" unique_id=1987499922]
+[node name="SpawnerPoint_43" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222636" unique_id=751450652]
 
-[node name="@PathFollow2D@18661" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1310437793]
+[node name="@PathFollow2D@222638" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=840660840]
 position = Vector2(453.63608, -454.50592)
 progress = 4223.209
 rotates = false
 
-[node name="SpawnerPoint_44" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18661" unique_id=1581956341]
+[node name="SpawnerPoint_44" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222638" unique_id=514325355]
 
-[node name="@PathFollow2D@18663" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1625042700]
+[node name="@PathFollow2D@222640" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1933178113]
 position = Vector2(503.16943, -372.28204)
 progress = 4319.191
 rotates = false
 
-[node name="SpawnerPoint_45" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18663" unique_id=2026369236]
+[node name="SpawnerPoint_45" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222640" unique_id=2128695784]
 
-[node name="@PathFollow2D@18665" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1833276508]
+[node name="@PathFollow2D@222642" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=358812606]
 position = Vector2(557.1063, -292.8867)
 progress = 4415.173
 rotates = false
 
-[node name="SpawnerPoint_46" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18665" unique_id=555788933]
+[node name="SpawnerPoint_46" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222642" unique_id=1862323602]
 
-[node name="@PathFollow2D@18667" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=644027332]
+[node name="@PathFollow2D@222644" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1618527809]
 position = Vector2(594.1187, -257.93304)
 progress = 4511.155
 rotates = false
 
-[node name="SpawnerPoint_47" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18667" unique_id=2061781469]
+[node name="SpawnerPoint_47" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222644" unique_id=1320244879]
 
-[node name="@PathFollow2D@18669" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=556203823]
+[node name="@PathFollow2D@222646" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=1110832384]
 position = Vector2(605.1661, -163.1906)
 progress = 4607.1367
 rotates = false
 
-[node name="SpawnerPoint_48" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18669" unique_id=1336241520]
+[node name="SpawnerPoint_48" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222646" unique_id=156251076]
 
-[node name="@PathFollow2D@18671" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=566953230]
+[node name="@PathFollow2D@222648" type="PathFollow2D" parent="GarbageCircleSpawner/SpawnPath" unique_id=114563777]
 position = Vector2(624.12866, -69.10333)
 progress = 4703.119
 rotates = false
 
-[node name="SpawnerPoint_49" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@18671" unique_id=521222975]
+[node name="SpawnerPoint_49" type="Node2D" parent="GarbageCircleSpawner/SpawnPath/@PathFollow2D@222648" unique_id=1151017398]
 
 [node name="AsteoidsCircleSpawner" type="Node2D" parent="." unique_id=1346267994]
 
@@ -464,354 +464,354 @@ circle_radius = 900.0
 spawner_count = 50
 spawner_group = "asteroid_spawner"
 
-[node name="@PathFollow2D@18723" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=315872975]
+[node name="@PathFollow2D@222700" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1340080100]
 position = Vector2(900, 0)
 rotates = false
 
-[node name="SpawnerPoint_0" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18723" unique_id=56169628]
+[node name="SpawnerPoint_0" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222700" unique_id=168295481]
 
-[node name="@PathFollow2D@18725" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=336383782]
+[node name="@PathFollow2D@222702" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1819797401]
 position = Vector2(864.1794, 95.67675)
 progress = 132.90808
 rotates = false
 
-[node name="SpawnerPoint_1" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18725" unique_id=2056763982]
+[node name="SpawnerPoint_1" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222702" unique_id=281306183]
 
-[node name="@PathFollow2D@18727" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1847385322]
+[node name="@PathFollow2D@222704" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=242338857]
 position = Vector2(837.9219, 225.95807)
 progress = 265.81616
 rotates = false
 
-[node name="SpawnerPoint_2" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18727" unique_id=1987825880]
+[node name="SpawnerPoint_2" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222704" unique_id=1519928376]
 
-[node name="@PathFollow2D@18729" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1178541492]
+[node name="@PathFollow2D@222706" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=371477298]
 position = Vector2(822.6963, 356.798)
 progress = 398.72424
 rotates = false
 
-[node name="SpawnerPoint_3" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18729" unique_id=144172382]
+[node name="SpawnerPoint_3" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222706" unique_id=100455816]
 
-[node name="@PathFollow2D@18731" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=2216130]
+[node name="@PathFollow2D@222708" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=2130963372]
 position = Vector2(771.3812, 405.53098)
 progress = 531.6323
 rotates = false
 
-[node name="SpawnerPoint_4" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18731" unique_id=1412946900]
+[node name="SpawnerPoint_4" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222708" unique_id=1104964012]
 
-[node name="@PathFollow2D@18733" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=354183587]
+[node name="@PathFollow2D@222710" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=852159910]
 position = Vector2(696.6952, 515.46906)
 progress = 664.54047
 rotates = false
 
-[node name="SpawnerPoint_5" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18733" unique_id=427467277]
+[node name="SpawnerPoint_5" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222710" unique_id=225880046]
 
-[node name="@PathFollow2D@18735" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=875379588]
+[node name="@PathFollow2D@222712" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1783466291]
 position = Vector2(628.17224, 629.2002)
 progress = 797.4485
 rotates = false
 
-[node name="SpawnerPoint_6" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18735" unique_id=1138586555]
+[node name="SpawnerPoint_6" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222712" unique_id=1773330385]
 
-[node name="@PathFollow2D@18737" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1941253574]
+[node name="@PathFollow2D@222714" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=584745853]
 position = Vector2(571.5907, 661.10156)
 progress = 930.3566
 rotates = false
 
-[node name="SpawnerPoint_7" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18737" unique_id=551644469]
+[node name="SpawnerPoint_7" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222714" unique_id=196672013]
 
-[node name="@PathFollow2D@18739" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1344611865]
+[node name="@PathFollow2D@222716" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1479666084]
 position = Vector2(460.12604, 733.4834)
 progress = 1063.2646
 rotates = false
 
-[node name="SpawnerPoint_8" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18739" unique_id=1361433381]
+[node name="SpawnerPoint_8" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222716" unique_id=1410336067]
 
-[node name="@PathFollow2D@18741" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1551872160]
+[node name="@PathFollow2D@222718" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=539719909]
 position = Vector2(352.25058, 811.0963)
 progress = 1196.1729
 rotates = false
 
-[node name="SpawnerPoint_9" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18741" unique_id=2059194395]
+[node name="SpawnerPoint_9" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222718" unique_id=721380131]
 
-[node name="@PathFollow2D@18743" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1309792969]
+[node name="@PathFollow2D@222720" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1462465579]
 position = Vector2(291.51248, 826.98)
 progress = 1329.0809
 rotates = false
 
-[node name="SpawnerPoint_10" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18743" unique_id=1082297453]
+[node name="SpawnerPoint_10" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222720" unique_id=330478091]
 
-[node name="@PathFollow2D@18745" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1918050281]
+[node name="@PathFollow2D@222722" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=671033333]
 position = Vector2(160.68797, 850.41504)
 progress = 1461.9889
 rotates = false
 
-[node name="SpawnerPoint_11" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18745" unique_id=841049453]
+[node name="SpawnerPoint_11" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222722" unique_id=723518861]
 
-[node name="@PathFollow2D@18747" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1132433142]
+[node name="@PathFollow2D@222724" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=518169766]
 position = Vector2(31.057278, 879.72504)
 progress = 1594.897
 rotates = false
 
-[node name="SpawnerPoint_12" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18747" unique_id=1071691322]
+[node name="SpawnerPoint_12" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222724" unique_id=998551785]
 
-[node name="@PathFollow2D@18749" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=815345748]
+[node name="@PathFollow2D@222726" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1580977025]
 position = Vector2(-31.058237, 879.7248)
 progress = 1727.805
 rotates = false
 
-[node name="SpawnerPoint_13" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18749" unique_id=320785851]
+[node name="SpawnerPoint_13" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222726" unique_id=811908475]
 
-[node name="@PathFollow2D@18751" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=525021139]
+[node name="@PathFollow2D@222728" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=2108873712]
 position = Vector2(-160.68886, 850.4149)
 progress = 1860.7133
 rotates = false
 
-[node name="SpawnerPoint_14" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18751" unique_id=1277217832]
+[node name="SpawnerPoint_14" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222728" unique_id=909047446]
 
-[node name="@PathFollow2D@18753" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1328135703]
+[node name="@PathFollow2D@222730" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=734965611]
 position = Vector2(-291.51337, 826.97986)
 progress = 1993.6213
 rotates = false
 
-[node name="SpawnerPoint_15" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18753" unique_id=993445222]
+[node name="SpawnerPoint_15" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222730" unique_id=2045978974]
 
-[node name="@PathFollow2D@18755" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1418710282]
+[node name="@PathFollow2D@222732" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=831731225]
 position = Vector2(-352.25095, 811.09595)
 progress = 2126.5293
 rotates = false
 
-[node name="SpawnerPoint_16" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18755" unique_id=1904045395]
+[node name="SpawnerPoint_16" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222732" unique_id=1324159360]
 
-[node name="@PathFollow2D@18757" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=208067784]
+[node name="@PathFollow2D@222734" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1042595014]
 position = Vector2(-460.12714, 733.48267)
 progress = 2259.4375
 rotates = false
 
-[node name="SpawnerPoint_17" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18757" unique_id=351855670]
+[node name="SpawnerPoint_17" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222734" unique_id=1338355292]
 
-[node name="@PathFollow2D@18759" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=2006632562]
+[node name="@PathFollow2D@222736" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=125122094]
 position = Vector2(-571.59247, 661.10046)
 progress = 2392.3457
 rotates = false
 
-[node name="SpawnerPoint_18" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18759" unique_id=1545149198]
+[node name="SpawnerPoint_18" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222736" unique_id=305989315]
 
-[node name="@PathFollow2D@18761" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=18589054]
+[node name="@PathFollow2D@222738" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=460155554]
 position = Vector2(-628.1728, 629.19916)
 progress = 2525.2537
 rotates = false
 
-[node name="SpawnerPoint_19" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18761" unique_id=1793738658]
+[node name="SpawnerPoint_19" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222738" unique_id=976370284]
 
-[node name="@PathFollow2D@18763" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1286014021]
+[node name="@PathFollow2D@222740" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=190466429]
 position = Vector2(-696.6958, 515.46814)
 progress = 2658.1619
 rotates = false
 
-[node name="SpawnerPoint_20" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18763" unique_id=1116498863]
+[node name="SpawnerPoint_20" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222740" unique_id=1744343851]
 
-[node name="@PathFollow2D@18765" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=872666264]
+[node name="@PathFollow2D@222742" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1433579501]
 position = Vector2(-771.3811, 405.531)
 progress = 2791.0698
 rotates = false
 
-[node name="SpawnerPoint_21" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18765" unique_id=964210401]
+[node name="SpawnerPoint_21" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222742" unique_id=984630097]
 
-[node name="@PathFollow2D@18767" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1383094006]
+[node name="@PathFollow2D@222744" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=786323516]
 position = Vector2(-822.697, 356.79828)
 progress = 2923.9778
 rotates = false
 
-[node name="SpawnerPoint_22" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18767" unique_id=589109938]
+[node name="SpawnerPoint_22" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222744" unique_id=634186336]
 
-[node name="@PathFollow2D@18769" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1580476806]
+[node name="@PathFollow2D@222746" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=893186770]
 position = Vector2(-837.9218, 225.95819)
 progress = 3056.886
 rotates = false
 
-[node name="SpawnerPoint_23" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18769" unique_id=578016374]
+[node name="SpawnerPoint_23" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222746" unique_id=2008236180]
 
-[node name="@PathFollow2D@18771" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1495409924]
+[node name="@PathFollow2D@222748" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=564076525]
 position = Vector2(-864.1794, 95.676125)
 progress = 3189.794
 rotates = false
 
-[node name="SpawnerPoint_24" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18771" unique_id=325582515]
+[node name="SpawnerPoint_24" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222748" unique_id=1083048365]
 
-[node name="@PathFollow2D@18773" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1763167752]
+[node name="@PathFollow2D@222750" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=626499973]
 position = Vector2(-900, 0.0004095778)
 progress = 3322.7021
 rotates = false
 
-[node name="SpawnerPoint_25" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18773" unique_id=501147398]
+[node name="SpawnerPoint_25" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222750" unique_id=675253734]
 
-[node name="@PathFollow2D@18775" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=728147023]
+[node name="@PathFollow2D@222752" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1690094596]
 position = Vector2(-864.1792, -95.677605)
 progress = 3455.61
 rotates = false
 
-[node name="SpawnerPoint_26" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18775" unique_id=180529094]
+[node name="SpawnerPoint_26" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222752" unique_id=1802871970]
 
-[node name="@PathFollow2D@18777" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=663176924]
+[node name="@PathFollow2D@222754" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1916212792]
 position = Vector2(-837.9215, -225.96014)
 progress = 3588.5186
 rotates = false
 
-[node name="SpawnerPoint_27" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18777" unique_id=672720981]
+[node name="SpawnerPoint_27" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222754" unique_id=472083186]
 
-[node name="@PathFollow2D@18779" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=908744380]
+[node name="@PathFollow2D@222756" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=140483122]
 position = Vector2(-822.6997, -356.79926)
 progress = 3721.4265
 rotates = false
 
-[node name="SpawnerPoint_28" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18779" unique_id=333387843]
+[node name="SpawnerPoint_28" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222756" unique_id=329117714]
 
-[node name="@PathFollow2D@18781" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=978076212]
+[node name="@PathFollow2D@222758" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1546649050]
 position = Vector2(-771.3793, -405.53375)
 progress = 3854.3345
 rotates = false
 
-[node name="SpawnerPoint_29" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18781" unique_id=2070188123]
+[node name="SpawnerPoint_29" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222758" unique_id=1137093306]
 
-[node name="@PathFollow2D@18783" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1101332917]
+[node name="@PathFollow2D@222760" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1134334069]
 position = Vector2(-696.6934, -515.4717)
 progress = 3987.2427
 rotates = false
 
-[node name="SpawnerPoint_30" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18783" unique_id=1436920439]
+[node name="SpawnerPoint_30" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222760" unique_id=1386228199]
 
-[node name="@PathFollow2D@18785" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1720672783]
+[node name="@PathFollow2D@222762" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=360487804]
 position = Vector2(-628.16974, -629.2053)
 progress = 4120.151
 rotates = false
 
-[node name="SpawnerPoint_31" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18785" unique_id=653150269]
+[node name="SpawnerPoint_31" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222762" unique_id=2054495715]
 
-[node name="@PathFollow2D@18787" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1088799751]
+[node name="@PathFollow2D@222764" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1470367719]
 position = Vector2(-571.5865, -661.1041)
 progress = 4253.0586
 rotates = false
 
-[node name="SpawnerPoint_32" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18787" unique_id=114144354]
+[node name="SpawnerPoint_32" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222764" unique_id=860205140]
 
-[node name="@PathFollow2D@18789" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=481652926]
+[node name="@PathFollow2D@222766" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=626682002]
 position = Vector2(-460.12234, -733.4859)
 progress = 4385.967
 rotates = false
 
-[node name="SpawnerPoint_33" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18789" unique_id=1941312673]
+[node name="SpawnerPoint_33" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222766" unique_id=652177694]
 
-[node name="@PathFollow2D@18791" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=543405003]
+[node name="@PathFollow2D@222768" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1582602862]
 position = Vector2(-352.24744, -811.0989)
 progress = 4518.875
 rotates = false
 
-[node name="SpawnerPoint_34" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18791" unique_id=1137516688]
+[node name="SpawnerPoint_34" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222768" unique_id=1199789292]
 
-[node name="@PathFollow2D@18793" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1620087674]
+[node name="@PathFollow2D@222770" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=941215754]
 position = Vector2(-291.50894, -826.9805)
 progress = 4651.7827
 rotates = false
 
-[node name="SpawnerPoint_35" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18793" unique_id=1365485862]
+[node name="SpawnerPoint_35" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222770" unique_id=2126559010]
 
-[node name="@PathFollow2D@18795" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=894225385]
+[node name="@PathFollow2D@222772" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=760495529]
 position = Vector2(-160.68474, -850.4157)
 progress = 4784.6914
 rotates = false
 
-[node name="SpawnerPoint_36" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18795" unique_id=1014446274]
+[node name="SpawnerPoint_36" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222772" unique_id=645230415]
 
-[node name="@PathFollow2D@18797" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1284270102]
+[node name="@PathFollow2D@222774" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=105901242]
 position = Vector2(-31.054436, -879.72577)
 progress = 4917.599
 rotates = false
 
-[node name="SpawnerPoint_37" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18797" unique_id=1312022900]
+[node name="SpawnerPoint_37" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222774" unique_id=1180585238]
 
-[node name="@PathFollow2D@18799" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=594639401]
+[node name="@PathFollow2D@222776" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=345992313]
 position = Vector2(31.061031, -879.72406)
 progress = 5050.5073
 rotates = false
 
-[node name="SpawnerPoint_38" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18799" unique_id=905495997]
+[node name="SpawnerPoint_38" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222776" unique_id=2086470517]
 
-[node name="@PathFollow2D@18801" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=595933094]
+[node name="@PathFollow2D@222778" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1113241317]
 position = Vector2(160.69145, -850.4144)
 progress = 5183.415
 rotates = false
 
-[node name="SpawnerPoint_39" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18801" unique_id=1316761389]
+[node name="SpawnerPoint_39" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222778" unique_id=799601500]
 
-[node name="@PathFollow2D@18803" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=218450216]
+[node name="@PathFollow2D@222780" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=250673643]
 position = Vector2(291.51572, -826.97943)
 progress = 5316.3237
 rotates = false
 
-[node name="SpawnerPoint_40" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18803" unique_id=1062623470]
+[node name="SpawnerPoint_40" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222780" unique_id=1787205105]
 
-[node name="@PathFollow2D@18805" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=2032359552]
+[node name="@PathFollow2D@222782" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1985680407]
 position = Vector2(352.25287, -811.09467)
 progress = 5449.2314
 rotates = false
 
-[node name="SpawnerPoint_41" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18805" unique_id=103391343]
+[node name="SpawnerPoint_41" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222782" unique_id=1054585662]
 
-[node name="@PathFollow2D@18807" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1034970832]
+[node name="@PathFollow2D@222784" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=908622652]
 position = Vector2(460.1276, -733.48236)
 progress = 5582.1396
 rotates = false
 
-[node name="SpawnerPoint_42" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18807" unique_id=1262150991]
+[node name="SpawnerPoint_42" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222784" unique_id=44972991]
 
-[node name="@PathFollow2D@18809" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1412359153]
+[node name="@PathFollow2D@222786" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=755054872]
 position = Vector2(571.59186, -661.101)
 progress = 5715.048
 rotates = false
 
-[node name="SpawnerPoint_43" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18809" unique_id=373808062]
+[node name="SpawnerPoint_43" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222786" unique_id=1976389704]
 
-[node name="@PathFollow2D@18811" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1232548697]
+[node name="@PathFollow2D@222788" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=189629860]
 position = Vector2(628.17236, -629.1997)
 progress = 5847.9556
 rotates = false
 
-[node name="SpawnerPoint_44" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18811" unique_id=1771994296]
+[node name="SpawnerPoint_44" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222788" unique_id=1421804020]
 
-[node name="@PathFollow2D@18813" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1896980666]
+[node name="@PathFollow2D@222790" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1420453807]
 position = Vector2(696.6958, -515.46796)
 progress = 5980.864
 rotates = false
 
-[node name="SpawnerPoint_45" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18813" unique_id=690322574]
+[node name="SpawnerPoint_45" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222790" unique_id=1806355265]
 
-[node name="@PathFollow2D@18815" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=916520160]
+[node name="@PathFollow2D@222792" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=760803997]
 position = Vector2(771.38153, -405.53043)
 progress = 6113.772
 rotates = false
 
-[node name="SpawnerPoint_46" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18815" unique_id=147288224]
+[node name="SpawnerPoint_46" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222792" unique_id=1653836230]
 
-[node name="@PathFollow2D@18817" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=548523744]
+[node name="@PathFollow2D@222794" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=14981831]
 position = Vector2(822.6949, -356.79733)
 progress = 6246.68
 rotates = false
 
-[node name="SpawnerPoint_47" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18817" unique_id=1087381113]
+[node name="SpawnerPoint_47" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222794" unique_id=318192881]
 
-[node name="@PathFollow2D@18819" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1408265709]
+[node name="@PathFollow2D@222796" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=598824759]
 position = Vector2(837.92194, -225.95747)
 progress = 6379.588
 rotates = false
 
-[node name="SpawnerPoint_48" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18819" unique_id=676437593]
+[node name="SpawnerPoint_48" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222796" unique_id=1631670613]
 
-[node name="@PathFollow2D@18821" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=31414865]
+[node name="@PathFollow2D@222798" type="PathFollow2D" parent="AsteoidsCircleSpawner/SpawnPath" unique_id=1225400374]
 position = Vector2(864.17926, -95.6766)
 progress = 6512.496
 rotates = false
 
-[node name="SpawnerPoint_49" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@18821" unique_id=1932794646]
+[node name="SpawnerPoint_49" type="Node2D" parent="AsteoidsCircleSpawner/SpawnPath/@PathFollow2D@222798" unique_id=1703358841]
 
 [node name="World2D" type="Node2D" parent="." unique_id=1318285834]
 

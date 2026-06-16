@@ -9,9 +9,8 @@ class_name UpgradeSlotUI
 			_update_editor_icon()
 
 @onready var icon_button: Button = $IconButton
-@onready var placeholder_rect: ColorRect = $IconButton/PlaceholderRect
-@onready var icon_rect: TextureRect = $IconButton/IconRect
-@onready var lvl_indicator: Label = $IconButton/LvlIndicator
+@onready var placeholder_rect: ColorRect = get_node_or_null("IconButton/PlaceholderRect")
+@onready var icon_rect: TextureRect = $IconRect
 
 var is_newly_unlocked: bool = false
 var glow_rotation: float = 0.0
@@ -20,6 +19,20 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		_update_editor_icon()
 		return
+		
+	var btn_style = StyleBoxFlat.new()
+	btn_style.bg_color = Color.WHITE
+	btn_style.set_corner_radius_all(12)
+	
+	icon_button.add_theme_stylebox_override("normal", btn_style)
+	icon_button.add_theme_stylebox_override("hover", btn_style)
+	icon_button.add_theme_stylebox_override("pressed", btn_style)
+	icon_button.add_theme_stylebox_override("disabled", btn_style)
+	icon_button.add_theme_stylebox_override("focus", btn_style)
+	
+	icon_button.self_modulate = Color("39009c")
+	icon_button.flat = false
+	add_theme_stylebox_override("panel", StyleBoxEmpty.new())
 		
 	# Connect local button signals
 	if not icon_button.pressed.is_connected(_on_buy_pressed):
@@ -39,26 +52,29 @@ func _update_icon_node(rect: TextureRect, placeholder: ColorRect) -> void:
 		if upgrade_data.icon:
 			rect.texture = upgrade_data.icon
 			rect.visible = true
-			placeholder.visible = false
+			if placeholder:
+				placeholder.visible = false
 		else:
 			var hash_val = upgrade_data.upgrade_id.hash()
 			var r = (hash_val & 0xFF0000) >> 16
 			var g = (hash_val & 0x00FF00) >> 8
 			var b = (hash_val & 0x0000FF)
-			placeholder.color = Color(r / 255.0, g / 255.0, b / 255.0)
-			placeholder.visible = true
+			if placeholder:
+				placeholder.color = Color(r / 255.0, g / 255.0, b / 255.0)
+				placeholder.visible = true
 			rect.visible = false
 	else:
 		rect.texture = null
 		rect.visible = false
-		placeholder.color = Color(0.15, 0.15, 0.18, 1.0)
-		placeholder.visible = true
+		if placeholder:
+			placeholder.color = Color(0.15, 0.15, 0.18, 1.0)
+			placeholder.visible = true
 
 func _update_editor_icon() -> void:
 	# Safely access nodes in the editor before _ready is called
-	var rect = get_node_or_null("IconButton/IconRect") as TextureRect
+	var rect = get_node_or_null("IconRect") as TextureRect
 	var placeholder = get_node_or_null("IconButton/PlaceholderRect") as ColorRect
-	if rect and placeholder:
+	if rect:
 		_update_icon_node(rect, placeholder)
 
 func setup(data: UpgradeData) -> void:
@@ -73,13 +89,25 @@ func _refresh_ui() -> void:
 		
 	var current_lvl = get_node("/root/UpgradeManager").get_upgrade_level(upgrade_data.upgrade_id)
 	
-	# Level indicator (checkmark for purchased/MAXed)
+	# Root PanelContainer does not rotate
+	rotation_degrees = 0.0
+	
+	# Set self_modulate to #39009C
+	icon_button.self_modulate = Color("39009c")
+	
+	# Set pivot offset for IconButton
+	icon_button.pivot_offset = icon_button.size / 2.0
+	
+	# Center and size IconRect to be 25% smaller than the button
+	icon_rect.custom_minimum_size = custom_minimum_size * 0.75
+	icon_rect.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	icon_rect.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	icon_rect.scale = Vector2.ONE
+	
 	if current_lvl >= upgrade_data.max_level:
-		lvl_indicator.visible = true
-		rotation_degrees = 45.0
+		icon_button.rotation_degrees = 45.0
 	else:
-		lvl_indicator.visible = false
-		rotation_degrees = 0.0
+		icon_button.rotation_degrees = 0.0
 		
 	# Visual modulation based on lock state and affordability
 	var upgrade_mgr = get_node("/root/UpgradeManager")
@@ -104,10 +132,10 @@ func _on_buy_pressed() -> void:
 	if upgrade_mgr.purchase_upgrade(upgrade_data):
 		_refresh_ui()
 		# Reset rotation to 0 before animating to a full spin + 45 degrees (405 degrees total)
-		rotation_degrees = 0.0
-		pivot_offset = size / 2.0
+		icon_button.rotation_degrees = 0.0
+		icon_button.pivot_offset = icon_button.size / 2.0
 		var rotate_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-		rotate_tween.tween_property(self, "rotation_degrees", 405.0, 0.5)
+		rotate_tween.tween_property(icon_button, "rotation_degrees", 405.0, 0.5)
 		
 		# Update tooltip if we are still hovering it
 		_on_mouse_entered()

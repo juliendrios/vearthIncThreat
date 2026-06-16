@@ -25,7 +25,18 @@ class_name SpawnPath
 func _ready() -> void:
 	if not curve or curve.get_point_count() == 0:
 		_generate_circle()
-	_rebuild_spawners()
+	if get_child_count() == 0 or Engine.is_editor_hint():
+		_rebuild_spawners()
+	else:
+		_register_existing_spawners()
+
+func _register_existing_spawners() -> void:
+	for child in get_children():
+		if child is PathFollow2D:
+			for sub_child in child.get_children():
+				if sub_child is Node2D and sub_child.name.begins_with("SpawnerPoint_"):
+					if not spawner_group.is_empty():
+						sub_child.add_to_group(spawner_group)
 
 func _generate_circle() -> void:
 	var new_curve = Curve2D.new()
@@ -43,9 +54,10 @@ func _rebuild_spawners() -> void:
 	if not is_inside_tree():
 		return
 		
-	# Clean up old child PathFollow2D nodes in the editor safely using queue_free
+	# Clean up old child PathFollow2D nodes safely
 	for child in get_children():
-		if child is PathFollow2D and not child.is_queued_for_deletion():
+		if child is PathFollow2D:
+			remove_child(child)
 			child.queue_free()
 			
 	if not curve or spawner_count <= 0:

@@ -149,7 +149,7 @@ func _physics_process(delta: float) -> void:
 		# Return to pool without death awards
 		killed_by_player = false
 		if GameManager.object_pooler:
-			GameManager.object_pooler.return_to_pool("garbage", self)
+			GameManager.object_pooler.return_to_pool("garbage", self )
 		else:
 			queue_free()
 
@@ -163,7 +163,9 @@ func _on_death() -> void:
 		GameManager.register_eliminated_threat()
 		
 		# Roll debris chance
-		var roll_chance = GameManager.debris_chance
+		var roll_chance = 0.0
+		if UpgradeManager.get_upgrade_level("DA_UnlockDebrie_T0") > 0:
+			roll_chance = GameManager.debris_chance
 		var roll_success = randf() < roll_chance
 		
 		# Check if UpgradeManager has a guaranteed debris flag
@@ -173,7 +175,9 @@ func _on_death() -> void:
 			
 		if roll_success:
 			_spawn_debris_burst()
-			GameManager.debris_chance = 0.20
+			var upgrade = UpgradeManager.upgrades_by_id.get("DA_UnlockDebrie_T0")
+			var base_chance = upgrade.value_increment if upgrade else 0.20
+			GameManager.debris_chance = base_chance
 
 func _spawn_debris_burst() -> void:
 	if not GameManager.object_pooler:
@@ -186,14 +190,14 @@ func _spawn_debris_burst() -> void:
 	
 	# Fixed 8 directions order: North, South, East, West, NE, SW, NW, SE
 	var directions = [
-		Vector2(0, -1),                  # North
-		Vector2(0, 1),                   # South
-		Vector2(1, 0),                   # East
-		Vector2(-1, 0),                  # West
-		Vector2(1, -1).normalized(),     # North-East
-		Vector2(-1, 1).normalized(),     # South-West
-		Vector2(-1, -1).normalized(),    # North-West
-		Vector2(1, 1).normalized()       # South-East
+		Vector2(0, -1), # North
+		Vector2(0, 1), # South
+		Vector2(1, 0), # East
+		Vector2(-1, 0), # West
+		Vector2(1, -1).normalized(), # North-East
+		Vector2(-1, 1).normalized(), # South-West
+		Vector2(-1, -1).normalized(), # North-West
+		Vector2(1, 1).normalized() # South-East
 	]
 	
 	for i in range(count):

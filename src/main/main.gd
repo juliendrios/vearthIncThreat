@@ -38,4 +38,9 @@ func _process(_delta: float) -> void:
 		else:
 			if active_targets <= 5:
 				wave_active = false
-				game_mgr.end_round()
+				
+				# Trigger spawners to start next wave immediately
+				var spawners = get_tree().get_nodes_in_group("spawner")
+				for spawner in spawners:
+					if spawner.has_method("start_spawning"):
+						spawner.start_spawning()

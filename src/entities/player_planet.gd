@@ -108,7 +108,9 @@ func _physics_process(_delta: float) -> void:
 		# Slow rotation for visual aesthetic
 		visual_3d.rotate_y(0.005)
 		
-	# Planet health decay disabled
+	# Planet health decay
+	if decay_rate > 0.0:
+		take_damage(decay_rate * _delta)
 
 func _on_upgrade_purchased(upgrade_id: String, _new_level: int) -> void:
 	var upgrade = get_node("/root/UpgradeManager").upgrades_by_id.get(upgrade_id)
@@ -140,10 +142,10 @@ func _update_satellites() -> void:
 	# Level 3 (6 satellites): Add South-East (PI/4), North-West (-3*PI/4)
 	# Level 4 (8 satellites): Add South-West (3*PI/4), North-East (-PI/4)
 	var angles = [
-		0.0, PI,               # Pair 1 (East, West)
-		PI/2, -PI/2,           # Pair 2 (South, North)
-		PI/4, -3.0*PI/4,       # Pair 3 (SE, NW)
-		3.0*PI/4, -PI/4        # Pair 4 (SW, NE)
+		0.0, PI, # Pair 1 (East, West)
+		PI / 2, -PI / 2, # Pair 2 (South, North)
+		PI / 4, -3.0 * PI / 4, # Pair 3 (SE, NW)
+		3.0 * PI / 4, -PI / 4 # Pair 4 (SW, NE)
 	]
 	
 	# Clamp to maximum supported spots (8)

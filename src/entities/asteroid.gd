@@ -97,7 +97,9 @@ func _on_death() -> void:
 		GameManager.register_eliminated_threat()
 		
 		# Roll debris chance
-		var roll_chance = GameManager.debris_chance
+		var roll_chance = 0.0
+		if UpgradeManager.get_upgrade_level("DA_UnlockDebrie_T0") > 0:
+			roll_chance = GameManager.debris_chance
 		var roll_success = randf() < roll_chance
 		
 		# Check if UpgradeManager has a guaranteed debris flag
@@ -107,7 +109,9 @@ func _on_death() -> void:
 			
 		if roll_success:
 			_spawn_debris_burst()
-			GameManager.debris_chance = 0.20
+			var upgrade = UpgradeManager.upgrades_by_id.get("DA_UnlockDebrie_T0")
+			var base_chance = upgrade.value_increment if upgrade else 0.20
+			GameManager.debris_chance = base_chance
 			
 		# Asteroids explode. We can trigger a small screen shake or particle burst in 3D
 		_trigger_destruction_fx()

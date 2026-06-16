@@ -25,9 +25,10 @@ func _ready() -> void:
 
 func _on_state_changed(state: int) -> void:
 	var game_mgr = get_node("/root/GameManager")
-	if state == game_mgr.GameState.PAUSED or state == game_mgr.GameState.DEFEAT:
+	if state == game_mgr.GameState.END_SESSION:
 		visible = true
 		title_label.text = "Session Finished"
+		continue_button.text = "Continue"
 		stats_label.text = "Credits on this session: $%d\nEliminated Threats: %d" % [int(game_mgr.run_credits), game_mgr.eliminated_threats]
 		skill_tree_button.visible = true
 		continue_button.visible = true
@@ -40,8 +41,6 @@ func _on_skill_tree_pressed() -> void:
 
 func _on_continue_pressed() -> void:
 	var game_mgr = get_node("/root/GameManager")
-	if game_mgr.current_state == game_mgr.GameState.DEFEAT:
+	if game_mgr.current_state == game_mgr.GameState.END_SESSION:
 		game_mgr.reset_game()
 		get_tree().reload_current_scene()
-	else:
-		game_mgr.start_next_round()
