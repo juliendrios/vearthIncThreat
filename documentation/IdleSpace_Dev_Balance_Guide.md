@@ -1,93 +1,86 @@
-# Guia de Desenvolvimento & Balanceamento - IdleSpaceCpp
+# Development & Balance Guide - VearthIncThreat (Godot 4)
 
-Este documento consolida o **Guia de Desenvolvimento (C++/Blueprint)** e o **Guia de Balanceamento de Upgrades**, servindo como manual unificado para expansão de conteúdo e calibração matemática do jogo.
-
----
-
-## PARTE 1: GUIA DE DESENVOLVIMENTO (C++)
-
-O projeto utiliza uma arquitetura híbrida C++/Blueprint focada em alta performance e expansibilidade rápida.
-
-### 1. Sistema de Pooling (`UObjectPoolSubsystem`)
-Todos os objetos dinâmicos voadores (Lixo Espacial, Asteroides, Inimigos, Projéteis e Debris) **NUNCA** devem ser instanciados com `SpawnActor` ou destruídos com `DestroyActor`. Em vez disso:
-* Use `Pool->BorrowFromPool(Class, Transform)` para ativar um objeto.
-* Use `Pool->ReturnToPool(Actor)` para reciclar um objeto.
-* **Regras Rígidas de C++**:
-  - `OnPoolActivate()`: Reinicie escalas, velocidades, HP e estados visuais aqui.
-  - `OnPoolDeactivate()`: Pare todos os emissores de partículas, efeitos sonoros e limpe timers ativos para evitar memory leaks.
-  - `ApplyDamage()`: Ponto centralizado para aplicar dano, reações de impacto (câmera shake), efeitos de slow (desaceleração) e checagem de morte.
-
-### 2. Fluxo para Adicionar Novo Conteúdo
-
-#### A. Adicionar um Novo Asteroide (Recurso)
-1. Crie um novo Data Asset baseado na classe `ResourcesDA` no editor Unreal.
-2. Configure a malha visual (Mesh), Pontos de Vida (HP), Valor Monetário (Value) e Velocidade base.
-3. Para incluí-lo nas ondas: abra o Data Asset `DA_SpawnConfig` (na pasta Data) e adicione seu novo Data Asset nos slots de onda desejados.
-
-#### B. Adicionar uma Nova Nave Inimiga
-1. Crie um novo Data Asset do tipo `SpaceshipDA`.
-2. Configure a malha 3D e seus status de combate (Cadência de Tiro, Classe do Projétil, Raio de Órbita).
-3. Adicione este Data Asset no `DA_SpawnConfig` para colocá-lo na fila de spawn das waves.
-
-#### C. Adicionar um Novo Upgrade no Jogo
-1. **Passo C++**: Se precisar de um status ou multiplicador inédito, adicione um novo termo ao enum `EUpgradeCategory` no arquivo `EUpgradeCategory.h`.
-2. **Passo Data Asset**: Crie um novo Data Asset do tipo `DAUpgrades`. Configure o Nome, Ícone, Categoria de Upgrade (enum) e a lógica de incremento/porcentagem.
-3. **Passo UI**: Insira o widget `WBP_UpgradeNode` no Canvas da Skill Tree e atribua este Data Asset a ele.
-
-#### D. Adicionar um Novo Projétil
-1. Crie um Blueprint herdando de `DebrisProjectile` ou `APlayerProjectile`.
-2. Configure a malha, colisor e velocidade.
-3. Associe a nova classe de blueprint ao slot 'Projectile Class' em um Satélite ou recurso configurado em Data Assets.
+This document unifies the **Developer Guide (Godot 4 & GDScript)** and the **Upgrades & Sizing Balance Guide**, serving as a reference manual for expanding code features and calibrating mathematical parameters in the game.
 
 ---
 
-## PARTE 2: GUIA DE BALANCEAMENTO E MATEMÁTICA
+## PARTE 1: DEVELOPER GUIDE (GODOT 4 / GDSCRIPT)
 
-### 1. A Nova Matemática Unificada
-O jogo opera com um **Multiplicador Base de `1.0` (100%)**.
-Cada nível de upgrade soma um bônus a esse multiplicador base.
-A fórmula final aplicada aos status base dos atores é:
-$$\text{StatusFinal} = \text{StatusBase} \times (1.0f + \text{Soma dos Bônus})$$
+The project leverages Godot 4's lightweight scripting combined with custom autoload managers and dynamic resource definitions.
 
-O cálculo do bônus individual de cada classe `DAUpgrades` é determinado pelo nível efetivo ($N = \text{Level} \times \text{InternalLevel}$):
+### 1. Object Pooling (`ObjectPooler` & `Entity2D`)
+To maximize CPU performance and minimize memory fragmentation, dynamic gameplay nodes (such as Space Garbage, Asteroids, Enemy Spaceships, Debris, and Projectiles) **MUST NEVER** be created using `instantiate()` directly during gameplay loops or destroyed with `queue_free()`.
+* **Borrowing**: Call `ObjectPooler.borrow_from_pool(type, position_2d, velocity_2d)`.
+* **Returning**: Call `ObjectPooler.return_to_pool(type, node)` or call `die()` on the entity to recycle.
+* **Coding Protocol**:
+  - `on_pool_activate(spawn_pos_2d, initial_velocity)`: Reset physical parameters, health, visibility, and initialize 3D mesh instances.
+  - `on_pool_deactivate()`: Stop movement, clear visual markers, and remove from active physics groups.
+  - `take_damage(amount)`: Apply damage, spawn standard Label3D damage numbers, and trigger `die()` if health falls below zero.
 
-* **Linear (`bIsPercentage = false`)**:
-  $$\text{Bônus} = \text{ValueIncrement} \times N$$
-  > [!NOTE]
-  > Exemplo com Incremento 0.5, InternalLevel 1:
-  > * Nível 1 = +0.5 multiplicador
-  > * Nível 2 = +1.0 multiplicador
+### 2. Workflow for Adding New Game Content
 
-* **Composto/Exponencial (`bIsPercentage = true`)**:
-  $$\text{Bônus} = (1.0f + \text{ValueIncrement})^{N} - 1.0f$$
-  > [!NOTE]
-  > Exemplo com Incremento 0.2, InternalLevel 1:
-  > * Nível 1 = +0.2 multiplicador
-  > * Nível 2 = +0.44 multiplicador
+#### A. Adding a New Upgrade Resource
+1. In the FileSystem, create a new Resource (`.tres`) in [res://src/resources/upgrades/](file:///e:/GODOT/vearthIncThreat/src/resources/upgrades/).
+2. Select `UpgradeData` as the script class.
+3. Configure the inspector parameters:
+   - `upgrade_id`: Unique identifier (e.g. `DA_MyNewUpgrade_T0`).
+   - `upgrade_name`: Display title in the tooltip.
+   - `description`: Explanatory tooltip text.
+   - `category`: Select one of the supported category enums (e.g. `ClickDamage`, `DebrisAmount`, `PlanetHealth`).
+   - `base_cost`: The credit price to purchase.
+   - `max_level`: Maximum level limit.
+   - `value_increment`: Multiplier increase per level.
+   - `internal_level`: Step multiplier scaling.
+   - `is_percentage`: Set to `true` for compound exponential scaling, or `false` for linear.
+4. **Linking nodes**: In the parent upgrade resource, add your new upgrade's ID to its `unlocks` list. The skill tree connection lines and unlocks will be generated dynamically!
+
+#### B. Adding a New Spawner or Path Point
+1. Open the active scene `main.tscn`.
+2. Locate the `World2D/SpawnPath` node.
+3. Select `SpawnPath` and add points to the path to modify the spawning ring.
+4. If you want to configure spawners, they will automatically spawn along the Path2D points during startup.
 
 ---
 
-### 2. Recomendações de Ajuste por Categoria
+## PARTE 2: UPGRADES BALANCE & MATHEMATICS
 
-Abaixo está a tabela de calibração para orientar o design das árvores de upgrades:
+### 1. Unified Multiplier Formula
+The system starts with a **Base Multiplier of `1.0` (100%)**.
+Upgrades accumulate additively inside categories:
+$$\text{FinalMultiplier} = 1.0 + \sum (\text{IndividualUpgradeMultiplier} - 1.0)$$
 
-| Categoria | Tipo de Progressão | Incremento Sugerido (`ValueIncrement`) | Motivo e Recomendações |
+This design prevents compounding multipliers from making individual upgrades excessively overpowered. The multiplier for a specific upgrade is computed in `calculate_multiplier(level)` based on its level:
+
+* **Linear Progressions (`is_percentage = false`)**:
+  $$\text{Multiplier} = 1.0 + (\text{value_increment} \times \text{level} \times \text{internal_level})$$
+  *Example*: `value_increment = 0.5`, `internal_level = 1.0`:
+  - Level 1 = +0.5 multiplier (150% total)
+  - Level 2 = +1.0 multiplier (200% total)
+
+* **Exponential / Compound Progressions (`is_percentage = true`)**:
+  $$\text{Multiplier} = (1.0 + \text{value_increment})^{(\text{level} \times \text{internal_level})}$$
+  *Example*: `value_increment = 0.2`, `internal_level = 1.0`:
+  - Level 1 = +0.2 multiplier (120% total)
+  - Level 2 = +0.44 multiplier (144% total)
+
+---
+
+### 2. Suggested Tuning Settings
+
+| Upgrade Category | Sizing / Scale Mode | Sug. Increment (`value_increment`) | Tuning Rationale |
 | :--- | :---: | :---: | :--- |
-| **Dano de Clique** (`ClickDamage`) | Linear ou Composto | Linear: `1.0`<br>Composto: `0.15 - 0.20` | Use Composto se o HP dos inimigos escalar exponencialmente no Late Game. Caso contrário, Linear lineariza o dano de forma segura. |
-| **Velocidade de Auto-Click** (`AutoClickRate`) | Composto (Recomendado) | `0.10 - 0.15` | **Combate Retornos Decrescentes**: O intervalo é `Base / Multiplicador` ($1/x$). A fórmula Linear causa sensação de estagnação rápida. Composto mantém o progresso impactante até o limite físico de **0.05s**. |
-| **Raio de Clique** (`ClickRadius`) | Linear | `0.10 - 0.15` | Defina um `MaxPurchases` baixo (ex: 5 a 10) para evitar que o clique cubra toda a extensão da tela de jogo. |
-| **Vida/Escudo do Planeta** (`PlanetHealth` / `ShieldHP`) | Composto | `0.20 - 0.30` | Inimigos escalam dano de forma agressiva. A sobrevivência do planeta exige juros compostos nos níveis mais avançados. |
-| **Multiplicador de Recursos** (`ResourceMultiplier`) | Linear ou Composto | Linear: `0.10 - 0.20`<br>Composto: `0.10 - 0.15` | Se os preços da loja forem fixos, use Linear. Se os preços dos upgrades escalarem a cada compra, use Composto para compensar a inflação. |
-| **Quantidades Exatas** (Ex: `SatelliteAmount`, `GarbageAmount`) | **Obrigatório Linear** | `1.0` | **IMPORTANTE**: Essas categorias não representam taxas, mas contagens diretas. Multiplicadores não-inteiros são arredondados para baixo (ex: 1.8 satélites vira 1). Use sempre `bIsPercentage = false` e incremento `1.0`. |
+| **Click Damage** (`ClickDamage`) | Linear / Compound | Linear: `0.5 - 1.0`<br>Compound: `0.15 - 0.20` | Use compound scaling if health values scale high in later waves. |
+| **Auto Clicker Rate** (`AutoClickRate`) | Compound (Rec.) | `0.10 - 0.15` | Capped at a minimum click interval of **0.05s** (20 clicks/sec) to protect processing speed. |
+| **Click Radius** (`ClickRadius`) | Linear | `0.10 - 0.15` | Keep max levels low (e.g. 5-10) to avoid sweep coverage consuming the entire screen. |
+| **Planet Health / Shield** | Compound | `0.20 - 0.30` | High level runs have intense incoming threat damage, requiring compound scaling to keep up. |
+| **Exact Quantities** (e.g. `SatelliteAmount`) | **Linear Only** | `1.0` | These values represent exact node counts, not percentages. Non-integer multipliers are truncated down (e.g., 1.5 satellites yields 1 satellite). Keep `is_percentage = false` and `value_increment = 1.0`. |
 
 ---
 
-### 3. Dicas Rápidas de Design de Árvore
-
-> [!WARNING]
-> **Cuidado com Juros Compostos Altos**:
-> Evite usar `bIsPercentage = true` combinando com `ValueIncrement > 0.5`. Por exemplo, $(1.5)^{10} \approx 57.6$. Um upgrade de 10 níveis com $50\%$ de taxa multiplicaria o status original por 57 vezes, quebrando completamente a economia e o balanceamento das fases avançadas. Mantenha taxas compostas estritamente entre `0.05` e `0.25`.
-
-1. **Early Game (Upgrades Iniciais)**: Utilize valores menores de incremento linear para proporcionar um senso de progresso gradual.
-2. **Late Game (Upgrades Finais)**: Mantenha os mesmos incrementos básicos, mas aproveite o empilhamento das árvores que somam seus bônus na mesma categoria para criar picos de poder perceptíveis.
-3. **Frequência de Ondas**: Cadências de spawn de inimigos (`SpawnRate`) possuem limite mínimo de **0.2s** entre ondas. Evite reduzir muito este valor para não sobrecarregar a CPU com excesso de atores simultâneos na tela.
+### 3. Sizing Rules for UI Layout
+When designing new items in the upgrade/skill tree:
+* **Backgrounds**: The upgrade button slot should have NO background panel showing in its idle/normal state (use `StyleBoxEmpty` on the slot container).
+* **Icon Sizing**: The icon inside the slot must be **exactly 25% smaller** than the button size.
+  * *Calculation*: `icon_rect.custom_minimum_size = custom_minimum_size * 0.75` (e.g., 60x60 pixels for an 80x80 button).
+  * *Alignment*: Use `SIZE_SHRINK_CENTER` for both horizontal and vertical layout flags to keep it centered.
+* **Rotation**: Spin animations on buy should apply only to the custom button background (`IconButton` rotates 405 degrees). The `IconRect` containing the `.png` visual must remain completely static.

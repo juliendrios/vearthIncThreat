@@ -26,7 +26,7 @@ var debris_chance: float = 0.0
 
 # Camera transition trigger from purchases
 var b_can_animate_camera: bool = false
-const CAMERA_ANIM_TRIGGER_CATEGORIES = ["GarbageAmount", "AutoClickRate"] # Equivalent categories triggering zoom
+var has_camera_animated_once: bool = false
 
 const SAVE_PATH = "user://save_game.json"
 var is_fully_loaded: bool = false
@@ -50,6 +50,7 @@ func reset_game() -> void:
 	current_zone = 1
 	decay_timer = decay_time_limit
 	b_can_animate_camera = false
+	has_camera_animated_once = false
 	eliminated_threats = 0
 	change_state(GameState.PLAYING, false)
 	save_game()
@@ -113,9 +114,9 @@ func planet_destroyed() -> void:
 	save_game()
 
 func _on_upgrade_purchased(upgrade_id: String, _new_level: int) -> void:
-	var upgrade = UpgradeManager.upgrades_by_id.get(upgrade_id)
-	if upgrade and upgrade.category in CAMERA_ANIM_TRIGGER_CATEGORIES:
+	if upgrade_id == "DA_UnlockAsteroids" and not has_camera_animated_once:
 		b_can_animate_camera = true
+		has_camera_animated_once = true
 	if upgrade_id == "DA_UnlockDebrie_T0":
 		debris_chance = 0.80
 	save_game()

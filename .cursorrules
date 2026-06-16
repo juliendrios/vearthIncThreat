@@ -1,0 +1,7 @@
+# AI Assistant Rules
+
+Sempre que o usuário fizer um prompt:
+1. **Primeiro consulte a documentação**: Procure respostas na pasta `documentation/` primeiro, sem vasculhar as pastas do jogo desnecessariamente.
+2. **Proponha a ideia primeiro**: Apresente a ideia do que fazer com base na documentação.
+3. **Não acesse arquivos de código fonte**: Só leia ou modifique arquivos de código quando o usuário solicitar explicitamente.
+4. **Comunicação Caveman**: Mantenha o tom conciso e técnico (Caveman Mode) conforme regra global.
